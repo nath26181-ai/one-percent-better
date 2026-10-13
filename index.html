@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#101411" />
+  <meta name="description" content="A calm daily habit tracker to become 1% better every day." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>1% Better — Habit Tracker</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="1% Better home"><span class="brand-mark">1<span>%</span></span><span><strong>BETTER</strong><small>DAILY PRACTICE</small></span></a>
+      <div class="sidebar-label">YOUR SPACE</div>
+      <button class="nav-item active" data-view="today"><span>◷</span> Today</button>
+      <button class="nav-item" data-view="history"><span>▦</span> History</button>
+      <button class="nav-item" data-view="insights"><span>↗</span> Insights</button>
+      <div class="sidebar-bottom"><div class="quote-mark">“</div><p>You don't have to be perfect. You just have to keep showing up.</p><small>YOUR DAILY REMINDER</small></div>
+      <div class="sidebar-footer">YOUR JOURNEY · ONE DAY AT A TIME</div>
+    </aside>
+
+    <main id="top" class="main-content">
+      <header class="topbar"><div class="mobile-brand"><span class="brand-mark">1<span>%</span></span><strong>BETTER</strong></div><div class="topbar-right"><span class="live-dot"></span><span>YOUR PERSONAL DASHBOARD</span><button id="installBtn" class="install-btn hidden" type="button">＋ Install app</button></div></header>
+
+      <section class="view active" id="view-today">
+        <div class="welcome-row"><div><p class="eyebrow" id="dateLabel">YOUR DAILY RESET</p><h1>Become <em>1% better.</em></h1><p class="subhead">Small promises. Kept daily. A stronger you.</p></div><div class="day-pill"><span class="pill-dot"></span><span id="dayLabel">YOUR DAY</span></div></div>
+        <div class="hero-grid">
+          <article class="progress-card panel"><div class="card-top"><div><p class="eyebrow">TODAY'S PROGRESS</p><h2 id="progressTitle">A fresh start.</h2></div><span class="icon-bubble">✳</span></div><div class="progress-main"><div class="ring" id="progressRing"><div class="ring-inner"><strong id="progressPercent">0%</strong><span>COMPLETE</span></div></div><div class="progress-copy"><strong><span id="completedCount">0</span><span class="muted"> / 20 habits</span></strong><p id="progressMessage">Every small action counts. Start with one.</p><div class="mini-progress"><span id="progressBar"></span></div><small id="remainingText">20 habits to go</small></div></div><div class="card-foot"><span>✦ Consistency over perfection</span><span id="todaySaved">Saved on this device</span></div></article>
+          <article class="streak-card panel"><div class="streak-orb">✦</div><p class="eyebrow">CURRENT STREAK</p><div class="streak-number"><strong id="streakCount">0</strong><span>days</span></div><p id="streakMessage">Your next streak starts today.</p><div class="streak-divider"></div><div class="streak-bottom"><span>BEST STREAK</span><strong id="bestStreak">0 days</strong></div></article>
+        </div>
+
+        <div class="section-heading"><div><p class="eyebrow">THE DAILY PRACTICE</p><h2>Today's habits <span id="habitCountLabel">0 of 20</span></h2></div><div class="date-control"><button id="prevDay" aria-label="Previous day">‹</button><input type="date" id="selectedDate" aria-label="Choose date"/><button id="nextDay" aria-label="Next day">›</button><button id="todayBtn" class="text-button">Today</button></div></div>
+        <div class="habit-layout"><div class="habit-list panel" id="habitList"></div><aside class="reflection-column"><article class="reflection-card panel"><div class="reflection-icon">✎</div><p class="eyebrow">END-OF-DAY REFLECTION</p><h3>Notice your wins.</h3><p class="reflection-intro">You made it through another day. What went right?</p><label for="winsInput">3 wins from today</label><textarea id="winsInput" rows="4" placeholder="1. I showed up for…&#10;2. I made progress on…&#10;3. I'm proud that I…"></textarea><label for="learnInput">One thing I learned</label><textarea id="learnInput" rows="3" placeholder="Tomorrow, I can improve by…"></textarea><div class="saved-note" id="reflectionSaved">✓ Saves automatically</div></article><article class="reminder-card"><span>✦</span><div><strong>Keep the promise.</strong><p>Success is built by the work you repeat, especially when you don't feel like it.</p></div></article></aside></div>
+      </section>
+
+      <section class="view" id="view-history"><div class="page-heading"><p class="eyebrow">LOOKING BACK</p><h1>Your <em>history.</em></h1><p class="subhead">Every checked habit is proof that you showed up.</p></div><article class="panel history-panel"><div class="section-heading compact"><div><p class="eyebrow">RECENT DAYS</p><h2>Your daily record</h2></div><span class="muted" id="historyTotal">0 recorded days</span></div><div id="historyList" class="history-list"></div></article></section>
+
+      <section class="view" id="view-insights"><div class="page-heading"><p class="eyebrow">THE BIGGER PICTURE</p><h1>Progress, <em>not perfection.</em></h1><p class="subhead">Patterns matter more than a single perfect day.</p></div><div class="insight-stats"><article class="panel stat-card"><span class="stat-icon">◷</span><p class="eyebrow">LAST 7 DAYS</p><strong id="weeklyAvg">0%</strong><small>Average daily completion</small></article><article class="panel stat-card"><span class="stat-icon">✓</span><p class="eyebrow">HABITS COMPLETED</p><strong id="totalChecks">0</strong><small>Across all recorded days</small></article><article class="panel stat-card"><span class="stat-icon">▦</span><p class="eyebrow">ACTIVE DAYS</p><strong id="activeDays">0</strong><small>Days with at least one habit</small></article></div><article class="panel chart-panel"><div class="section-heading compact"><div><p class="eyebrow">YOUR CONSISTENCY</p><h2>Daily completion</h2></div><span class="chart-key"><i></i> Habits completed (%)</span></div><div id="chartWrap" class="chart-wrap"></div></article><article class="panel chart-panel"><div class="section-heading compact"><div><p class="eyebrow">HABIT-BY-HABIT</p><h2>Most consistent habits</h2></div></div><div id="habitStats" class="habit-stats"></div></article></section>
+      <footer class="app-footer"><span>1% BETTER</span><span>BUILT ONE DAY AT A TIME</span><button id="exportBtn" class="text-button">Export my data ↗</button><button id="importBtn" class="text-button">Import backup</button><input type="file" id="importFile" accept="application/json" hidden /></footer>
+    </main>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
